@@ -5,10 +5,15 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "HHVM: Run UI Server",
+            "name": "HHVM: Update Router",
             "type": "hhvm",
             "request": "launch",
-            "script": "${workspaceFolder}/bin/init.hack"
+            "script": "${workspaceFolder}/scripts/build_router.hack"
+        }, {
+            "name": "HHVM: Attach to the UI Server",
+            "type": "hhvm",
+            "request": "attach"
         }
+        
     ]
 }
