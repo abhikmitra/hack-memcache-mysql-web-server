@@ -1,0 +1,2 @@
+ignored_paths = [ "api-sources/.+", "vendor/.*tests/.+", "vendor-rb/.*", "vendor/bin/.*", "vendor/facebook",  "vendor/hhvm/hhvm-autoload/*",  "vendor/hhvm/hacktest/*", "vendor/hhvm/hhast/*"]
+assume_php=false

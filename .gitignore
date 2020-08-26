@@ -1,0 +1,16 @@
+# General Gitignore
+.DS_Store
+.AppleDouble
+.LSOverride
+_site/
+*.swo
+*.swp
+_site
+.sass-cache
+*.psd
+*~
+
+# Hack Specific
+composer.phar
+vendor
+*.hhast.parser-cache

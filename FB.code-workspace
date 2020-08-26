@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"path": "ui-server"
+		},
+		{
+			"path": "client"
+		},
+		{
+			"path": "user-service"
+		},
+		{
+			"path": "gql-middle-tier"
+		}
+	],
+	"settings": {}
+}
