@@ -5,9 +5,7 @@
     "hhvm": "^4.29",
     "hhvm/type-assert": "^4.1",
     "facebook/hack-router": "^0.19.7",
-    "facebook/hack-router-codegen": "^0.17.5",
-    "facebook/xhp-lib": "^3.2",
-    "usox/hackttp": "^0.5.2"
+    "facebook/hack-router-codegen": "^0.17.5"
   },
   "require-dev": {
     "hhvm/hhast": "^4.64",

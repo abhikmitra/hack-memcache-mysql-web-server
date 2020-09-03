@@ -1,0 +1,12 @@
+.content input{
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.login {
+    position: fixed;
+    left: 42%;
+    top: 30%;
+    text-align: center;
+    align-content: center;
+}

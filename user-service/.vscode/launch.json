@@ -13,12 +13,6 @@
             "name": "HHVM: Attach to the UI Server",
             "type": "hhvm",
             "request": "attach"
-        },
-        {
-            "name": "HHVM: Run file",
-            "type": "hhvm",
-            "request": "launch",
-            "script": "${file}"
         }
         
     ]
