@@ -1,7 +1,7 @@
-namespace HackFacebook\UiServer\Controllers;
+namespace HackFacebook\UiServer\Controllers\Pages;
 use namespace HH\Lib\C;
-
-final class HTTP404Controller extends NonRoutableWebPageController {
+use HackFacebook\UiServer\Controllers;
+final class HTTP404Controller extends AbstractNonRoutableWebPageController {
 
     protected function getView(): \AbstractView {
         return new \Http404View();

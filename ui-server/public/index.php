@@ -97,7 +97,7 @@ async function getResponseForRequestAsync(
 
 function routeRequest(
     ServerRequestInterface $request,
-): (classname<Controllers\RoutableController>, ImmMap<string, string>) {
+): (classname<Controllers\IRoutableController>, ImmMap<string, string>) {
     try {
     return (new RequestRouter\FBRouter())->routeRequest($request);
     } catch (NotFoundException $e) {

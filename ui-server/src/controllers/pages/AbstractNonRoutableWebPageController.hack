@@ -1,4 +1,4 @@
-namespace HackFacebook\UiServer\Controllers;
+namespace HackFacebook\UiServer\Controllers\Pages;
 use type HHVM\UserDocumentation\LocalConfig;
 use type HHVM\UserDocumentation\UIGlyphIcon;
 use type Facebook\Experimental\Http\Message\{
@@ -8,9 +8,9 @@ use type Facebook\Experimental\Http\Message\{
 
 use namespace HH\Lib\C;
 use HackFacebook\UiServer\Http\Exceptions\RedirectException;
-use HackFacebook\UiServer\Controllers\WebController;
+use HackFacebook\UiServer\Controllers\AbstractWebController;
 use namespace HackFacebook\UiServer\Http;
-abstract class NonRoutableWebPageController extends WebController {
+abstract class AbstractNonRoutableWebPageController extends AbstractWebController {
 
   protected abstract function getView(): \AbstractView;
   /** Extend this if you want custom logic (e.g. redirects) before anything
@@ -40,13 +40,6 @@ abstract class NonRoutableWebPageController extends WebController {
     return 200;
   }
 
-  /* If you're reading this, you probably want to remove 'final' so that you
-   * can pull stuff out of $request or $parameters. Instead:
-   *
-   * - use getRequiredStringParam() and friends to get the data you need in a
-   *   safe and abstracted way
-   * - if there isn't an existing abstraction that fits your needs, add one
-   */
   final public function __construct(
     ImmMap<string, string> $parameters,
     private ServerRequestInterface $request,

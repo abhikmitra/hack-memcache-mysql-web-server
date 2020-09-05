@@ -7,9 +7,9 @@ use type Facebook\Experimental\Http\Message\{
 };
 use namespace Facebook\TypeAssert;
 use namespace HH\Lib\{C, Str, Vec};
-
+use HackFacebook\UiServer\GlobalValues;
 <<__ConsistentConstruct>>
-abstract class WebController {
+abstract class AbstractWebController {
 
     const type TParameterDefinitions = shape(
         'required' => ImmVector<RequestParameter>,
@@ -18,7 +18,6 @@ abstract class WebController {
 
     private RequestParameters $parameters;
     private ImmMap<string, string> $rawParameters;
-
     public function __construct(
         ImmMap<string, string> $parameters,
         private ServerRequestInterface $request,
@@ -54,7 +53,7 @@ abstract class WebController {
     ): self::TParameterDefinitions {
         try {
             $class = TypeAssert\classname_of(
-                RoutableController::class,
+                IRoutableController::class,
                 static::class,
             );
         } catch (IncorrectTypeException $e) {
@@ -83,5 +82,9 @@ abstract class WebController {
             return null;
         }
         return $params->at($name);
+    }
+
+    final protected function getRawBody_UNSAFE(string $name): ?string {
+        return GlobalValues\getPostParams($name);
     }
 }
