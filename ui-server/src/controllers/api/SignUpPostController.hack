@@ -9,27 +9,23 @@ type SignUpPostTData = shape('userId' => string);
 final class SignUpPostController
     extends AbstractAPIController<SignUpPostTData>
     implements IRoutablePostController {
-    
+    const type PostRequestParams =
+        shape('username' => string, 'password' => string);
     protected async function getAPIResponseAsync(
     ): Awaitable<shape(
         'statusCode' => int,
         'data' => SignUpPostTData,
         ?'headers' => dict<string, vec<string>>,
     )> {
-        $username = $this->getRawParameter_UNSAFE("username");
-        $password = $this->getRawParameter_UNSAFE("password");
-        invariant($username != null, "Username cannot be null");
-        invariant($password != null, "Username cannot be null");
-        $userId = await User::getUserByNameAndPassword($username, $password);
-        $sessionId = await Memcache\MemcacheConnector::addSessionId($userId);
-
-        $this->getRawParameter_UNSAFE("username");
+        $username = $this->getRawBody_UNSAFE("username");
+        $password = $this->getRawBody_UNSAFE("password");
+        invariant($username != null && $password != null, "Data Check");
+        $userId = await User::createUser($username, $password);
         $tData = shape(
             'statusCode' => 200,
             'data' => shape('userId' => "1"),
             'headers' => dict[
-                'x-session-id' => vec[$sessionId],
-                'Set-Cookie' => vec['x-session-id='.$sessionId],
+                'Location' => vec['/login'],
             ],
         );
         return $tData;

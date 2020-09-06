@@ -1,3 +1,4 @@
+use namespace HH\Lib\{C, Dict, Math, Str, Vec};
 
 abstract class AbstractView {
     abstract protected function getCSS(): Set<string>;
@@ -11,6 +12,14 @@ abstract class AbstractView {
         }
         $extra_class = $this->getExtraBodyClass();
         $body_class = $this->getBodyClass($extra_class);
+        $css = $this->getCSS();
+        $js = $this->getJS();
+        $css[] = "/css/common.css";
+        $Links = Vec\map($css, ($c) ==>
+            <link
+                href={$c}
+                            rel="stylesheet"/>);
+        $Scripts = Vec\map($js, ($c) ==> <script src={$c} type="javascript" />);
         $xhp =
             <x:doctype>
                 <html>
@@ -27,9 +36,11 @@ abstract class AbstractView {
                                 "https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700,700italic|Roboto:700"
                             rel="stylesheet"
                         />
+                        {$Links}
                     </head>
                     <body class={$body_class}>
                         {$content}
+                        {$Scripts}
                     </body>
                 </html>
             </x:doctype>;

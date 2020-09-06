@@ -1,5 +1,6 @@
 namespace HackFacebook\UiServer\MySQL;
 
+use HackFacebook\UiServer\Constants;
 function get_pool(): \AsyncMysqlConnectionPool {
     return new \AsyncMysqlConnectionPool(
         darray['pool_connection_limit' => 5],
@@ -9,11 +10,11 @@ function get_pool(): \AsyncMysqlConnectionPool {
 async function get_connection(): Awaitable<\AsyncMysqlConnection> {
     $pool = get_pool();
     $conn = await $pool->connect(
-        "qn0cquuabmqczee2.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
-        3306,
-        "wvuw43bc4oyh0d8w",
-        "ii0fuav2snkd9x7o",
-        "are5ro6siqeldz0f",
+        Constants::MYSQL_CONNECTION_HOST,
+        Constants::MYSQL_CONNECTION_PORT,
+        Constants::MYSQL_CONNECTION_DATABASE,
+        Constants::MYSQL_CONNECTION_USER,
+        Constants::MYSQL_CONNECTION_PASSWORD,
         10000000
     );
     return $conn;

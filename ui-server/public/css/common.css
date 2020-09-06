@@ -1,0 +1,8 @@
+.mainContainer {
+    text-align: center;
+}
+
+.content input{
+    display: block;
+    margin-bottom: 1rem;
+}

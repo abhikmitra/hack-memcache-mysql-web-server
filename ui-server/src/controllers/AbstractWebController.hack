@@ -29,7 +29,6 @@ abstract class AbstractWebController {
             }
             $combined_params[(string)$key] = (string)$value;
         }
-
         $spec = self::getParametersSpec();
         $this->parameters = new RequestParameters(
             $spec['required'],
@@ -86,5 +85,9 @@ abstract class AbstractWebController {
 
     final protected function getRawBody_UNSAFE(string $name): ?string {
         return GlobalValues\getPostParams($name);
+    }
+
+    final protected function getRawCookie_UNSAFE(string $name): ?string {
+        return idx($this->request->getCookieParams(),$name, null);
     }
 }

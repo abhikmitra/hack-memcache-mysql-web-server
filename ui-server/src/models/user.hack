@@ -31,9 +31,7 @@ final class User {
             $password,
         );
 
-        invariant($result->numRows() === 1, 'User is not found');
-        $val = $result->vectorRows()[0][0];
-        invariant($val != null, 'User is found');
-        return $val;
+        invariant($result->numRowsAffected() === 1, 'User registration successful');
+        return $userName;
     }
 }

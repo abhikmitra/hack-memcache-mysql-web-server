@@ -19,22 +19,37 @@ final class LoginPostController
         $username = $this->getRawBody_UNSAFE("username");
         $password = $this->getRawBody_UNSAFE("password");
         invariant($username != null && $password != null, "Data Check");
-        $userId =  await User::getUserByNameAndPassword(
-            $username,
-            $password,
-        );
-        $sessionId = await Memcache\MemcacheConnector::addSessionId($userId);
-
-        $this->getRawParameter_UNSAFE("username");
-        $tData = shape(
-            'statusCode'=> 200,
-            'data' => shape('userId' => "1"),
-            'headers' => dict[
-                'x-session-id' => vec[$sessionId],
-                'Set-Cookie' => vec['x-session-id='.$sessionId],
-                'Location' => vec['/'],
+        try {
+            $userId = await User::getUserByNameAndPassword(
+                $username,
+                $password,
+            );
+            $sessionId = await Memcache\MemcacheConnector::addSessionId(
+                $userId,
+            );
+            $tData = shape(
+                'statusCode' => 200,
+                'data' => shape('userId' => "1"),
+                'headers' => dict[
+                    'x-session-id' => vec[$sessionId],
+                    'Set-Cookie' => vec['x-session-id='.$sessionId],
+                    'Location' => vec['/'],
                 ],
-        );
+            );
+        } catch (\Exception $e) {
+            \var_dump($e);
+            $e->toString();
+            $tData = shape(
+                'statusCode' => 200,
+                'data' => shape('error' => $e->toString()),
+                'headers' => dict[
+                    'Location' => vec['/signUp'],
+                ],
+            );
+        }
+
+        
+        
         return $tData;
     }
 

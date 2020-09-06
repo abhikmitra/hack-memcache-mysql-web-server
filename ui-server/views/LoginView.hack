@@ -3,7 +3,6 @@ final class LoginView extends AbstractView {
     protected async function getBodyAsync(): Awaitable<\XHPRoot> {
         return <div class="content">
             <div class="login">
-                <h3>Login</h3>
                 <form action="/login" method="post">
                     <input name="username" type="text" placeholder="Username"/><br/>
                     <input name="password" type="password" placeholder="Username" />
