@@ -1,3 +1,0 @@
-ignored_paths = [ "vendor/.*tests/.+", "vendor-rb/.*", "vendor/bin/.*"]
-assume_php=false
-allowed_fixme_codes_strict = 2050, 4110
