@@ -2,7 +2,7 @@
 
 ### Why does this Repo exist ? 
 
-I used this repo to learn hack . One of the prooblmes I faced while learning Hack was availaibility of a basic web scaffolding to quickly setup a web server purely in Hack.
+I used this repo to learn hack . One of the problems I faced while learning Hack was availaibility of a basic web scaffolding to quickly setup a web server purely in Hack.
 
 ### Why do we need a scaffolding or prior art ? 
 
@@ -36,7 +36,7 @@ The web app has login/signup flow and the session id flow where the sessionId ge
 - `composer dump-autoload` to autoload all packages
 - `hh_client start` make sure hh_client is started so that type hints work in VS Code,
 - Make sure you have memcached setup. Here is a [guide](https://gist.github.com/tomysmile/ba6c0ba4488ea51e6423d492985a7953) 
-- Have mySQL setup . I have used a free instance in heroku. Fele free to install locally also.
+- Have mySQL setup . I have used a free instance in heroku. Feel free to install locally also.
 - Change [Constants.js](/ui-server/src/Constants.hack) to reflect the proper connection strings for Memcached and MySql.
 - Start the server (make sure the current directory is /ui-server)
 - ```hhvm -c config.ini -m server -p 8080```
