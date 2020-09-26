@@ -51,3 +51,4 @@ Just add a Controller and make sure it or any of its parents implement `IRoutabl
 
 ### Are these best practices.
 Nope , not even close . I tried to structure it based on what I have seen in otehr stack and these are by no means perfect . Use this as a scaffolding if you are new to Hack .
+
