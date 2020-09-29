@@ -14,6 +14,10 @@ A scaffolding helps a beginner in many ways
 
 This repo is meant to address all of these points .
 
+### Where can I read more about the process and design choices ?
+
+I have a [blog post](https://abhikmitra.github.io/blog/hack-php/) detailing the steps and some of my design choices .
+
 ### Tell me more.
 
 This repo comes with the following setup
